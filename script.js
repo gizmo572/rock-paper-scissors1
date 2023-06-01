@@ -21,7 +21,31 @@ function playRound(playerSelection, computerSelection) {
     return `You Lose! ${computerSelection} beats ${playerSelection.toLowerCase()}`;
 }
 
-const computerSelection = getComputerChoice();
-const playerSelection = prompt("Please enter 'Rock', 'Paper', or 'Scissors'.")
+function game() {
+    //declare vars 'player' and 'computer' and 'ties', each assigned to 0;
+    let player = 0, computer = 0, ties = 0;
+    //use while loop to iterate while 'player' and 'computer' are both less than 3
+    while (player < 3 && computer < 3) {
+        //declare var 'compChoice' and assign it to result of invoking 'getComputerChoice'
+        const compChoice = getComputerChoice();
+        //declare var 'playerChoice' and assign it to result of invoking prompt method, passing in a string that requests the player to choose rock paper or scissors.
+        const playerChoice = prompt("Please enter 'Rock', 'Paper', or 'Scissors'.")
+        //declare var 'result' assigned to result of invoking 'playRound' func, passing in 'playerChoice' and 'compChoice'
+        const result = playRound(playerChoice, compChoice);
+        console.log(result)
+        //if 'result' includes 'Win' increment 'player'
+        if (result.includes('Win')) player++;
+        //if 'result' includes 'Lose' increment 'computer'
+        if (result.includes('Lose')) computer++;
+        //if 'result' includes 'tie' increment 'ties'
+        if (result.includes('Tie')) ties++;
+        //log current score to console using template literal.
+        console.log(`Player: ${player} Computer: ${computer} Ties: ${ties}`)
+    }
+    //if 'player' is greater than 'computer' return a statement 'You Win!'
+    if (player > computer) return `YOU WIN!!!\nFINAL SCORE: ${player} - ${computer}`
+    //return 'You Lose =('
+    return `YOU LOSE =(\nFINAL SCORE: ${player} - ${computer}`
+}
 
-console.log(playRound(playerSelection, computerSelection));
+console.log(game());
