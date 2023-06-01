@@ -14,7 +14,7 @@ function playRound(playerSelection, computerSelection) {
     if (!choices.includes(playerSelection.toLowerCase())) return "Please enter a valid option!"
     //declare var 'winner'
     //use switch statement to determine winner, and assign 'winner' to the winner
-    if (playerSelection === computerSelection) return "It's a Tie!!!"
+    if (playerSelection.toLowerCase() === computerSelection) return "It's a Tie!!!"
     if (playerSelection.toLowerCase() === 'rock' && computerSelection === 'Scissors') return "You Win! Rock beats Scissors";
     if (playerSelection.toLowerCase() === 'paper' && computerSelection === 'Rock') return "You Win! Paper beats Rock";
     if (playerSelection.toLowerCase() === 'scissors' && computerSelection === 'Paper') return "You Win! Scissors beats Paper";
