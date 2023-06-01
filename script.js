@@ -22,6 +22,8 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
+    //declare var patience assigned to 3 initially
+    let patience = 3;
     //declare vars 'player' and 'computer' and 'ties', each assigned to 0;
     let player = 0, computer = 0, ties = 0;
     //use while loop to iterate while 'player' and 'computer' are both less than 3
@@ -39,6 +41,15 @@ function game() {
         if (result.includes('Lose')) computer++;
         //if 'result' includes 'tie' increment 'ties'
         if (result.includes('Tie')) ties++;
+        //if 'result' includes 'valid' decrement 'patience' by 1
+        if (result.includes('valid')) {
+            patience--;
+            //if patience is 0 or less, increment 'computer' and log angry message
+            if (patience <= 0) {
+                console.log("THAT'S IT!! I'VE LOST MY PATIENCE! COMPUTER WINS!")
+                computer++;
+            } else console.log("I'm starting to lose patience...")
+        }
         //log current score to console using template literal.
         console.log(`Player: ${player} Computer: ${computer} Ties: ${ties}`)
     }
